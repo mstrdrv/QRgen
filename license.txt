@@ -1,0 +1,143 @@
+MIT License
+
+-----------------------------------------
+English
+-----------------------------------------
+
+Copyright (c) 2026 Dmitry Rybchenko feat. Copilot
+(Copilot didn’t sleep while writing this. No worms or viruses detected; safe to consume raw.)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+-----------------------------------------
+Русский (неофициальный перевод)
+-----------------------------------------
+
+Лицензия MIT
+
+Copyright (c) 2026 Dmitry Rybchenko feat. Copilot
+(Copilot не спал, пока это писал. Червей и вирусов не содержит, можно употреблять сырым.)
+
+Настоящим бесплатно разрешается любому лицу, получившему копию данного
+программного обеспечения и сопутствующей документации («Программное
+обеспечение»), использовать Программное обеспечение без ограничений,
+включая, но не ограничиваясь правами на использование, копирование,
+изменение, объединение, публикацию, распространение, сублицензирование
+и/или продажу копий Программного обеспечения, а также разрешать лицам,
+которым предоставляется Программное обеспечение, делать то же самое,
+при соблюдении следующих условий:
+
+Вышеуказанное уведомление об авторских правах и данное разрешение должны
+быть включены во все копии или существенные части Программного обеспечения.
+
+ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ,
+ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ ГАРАНТИЯМИ
+ТОВАРНОЙ ПРИГОДНОСТИ, СООТВЕТСТВИЯ КОНКРЕТНОЙ ЦЕЛИ И НЕНАРУШЕНИЯ ПРАВ.
+НИ ПРИ КАКИХ ОБСТОЯТЕЛЬСТВАХ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ
+ОТВЕТСТВЕННОСТИ ЗА КАКИЕ-ЛИБО ИСКИ, УБЫТКИ ИЛИ ИНУЮ ОТВЕТСТВЕННОСТЬ,
+ВОЗНИКШУЮ В РЕЗУЛЬТАТЕ ДЕЙСТВИЯ ДОГОВОРА, ДЕЛИКТА ИЛИ ИНЫМ ОБРАЗОМ,
+В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ПРОГРАММНОГО
+ОБЕСПЕЧЕНИЯ, ИЛИ ИНЫМИ ДЕЙСТВИЯМИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.
+
+
+-----------------------------------------
+Deutsch (inoffizielle Übersetzung)
+-----------------------------------------
+
+MIT-Lizenz
+
+Copyright (c) 2026 Dmitry Rybchenko feat. Copilot
+(Copilot hat beim Schreiben nicht geschlafen. Keine Würmer oder Viren; roh verzehrbar.)
+
+Hiermit wird jeder Person, die eine Kopie dieser Software und der zugehörigen
+Dokumentation („Software“) erhält, kostenlos die Erlaubnis erteilt, die Software
+ohne Einschränkung zu verwenden, einschließlich und ohne Begrenzung der Rechte
+zur Nutzung, Kopie, Änderung, Zusammenführung, Veröffentlichung, Verteilung,
+Unterlizenzierung und/oder zum Verkauf von Kopien der Software sowie zur
+Erlaubnis für Personen, denen die Software bereitgestellt wird, dasselbe zu tun,
+unter den folgenden Bedingungen:
+
+Der obige Urheberrechtshinweis und dieser Erlaubnishinweis müssen in allen
+Kopien oder wesentlichen Teilen der Software enthalten sein.
+
+DIE SOFTWARE WIRD „WIE SIE IST“ BEREITGESTELLT, OHNE JEGLICHE GARANTIE,
+WEDER AUSDRÜCKLICH NOCH STILLSCHWEIGEND, EINSCHLIESSLICH, ABER NICHT
+BESCHRÄNKT AUF DIE GARANTIEN DER MARKTGÄNGIGKEIT, EIGNUNG FÜR EINEN
+BESTIMMTEN ZWECK UND NICHTVERLETZUNG. IN KEINEM FALL SIND DIE AUTOREN
+ODER URHEBERRECHTSINHABER FÜR ANSPRÜCHE, SCHÄDEN ODER ANDERE
+VERANTWORTLICHKEITEN HAFTBAR, OB AUS VERTRAG, UNERLAUBTER HANDLUNG ODER
+ANDERWEITIG, DIE AUS DER SOFTWARE ODER DER NUTZUNG ODER ANDEREN
+INTERAKTIONEN MIT DER SOFTWARE ENTSTEHEN.
+
+
+-----------------------------------------
+Español (traducción no oficial)
+-----------------------------------------
+
+Licencia MIT
+
+Copyright (c) 2026 Dmitry Rybchenko feat. Copilot
+(Copilot no durmió mientras escribía esto. Sin gusanos ni virus; apto para consumo crudo.)
+
+Por la presente se concede permiso, de manera gratuita, a cualquier persona que
+obtenga una copia de este software y la documentación asociada (“el Software”),
+para tratar con el Software sin restricciones, incluyendo sin limitación los
+derechos de uso, copia, modificación, fusión, publicación, distribución,
+sublicencia y/o venta de copias del Software, y permitir a las personas a quienes
+se les proporcione el Software hacer lo mismo, sujeto a las siguientes
+condiciones:
+
+El aviso de copyright anterior y este aviso de permiso deberán incluirse en todas
+las copias o partes sustanciales del Software.
+
+EL SOFTWARE SE PROPORCIONA “TAL CUAL”, SIN GARANTÍA DE NINGÚN TIPO, EXPRESA
+O IMPLÍCITA, INCLUYENDO PERO NO LIMITADA A GARANTÍAS DE COMERCIABILIDAD,
+IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO LOS
+AUTORES O TITULARES DEL COPYRIGHT SERÁN RESPONSABLES DE NINGÚN RECLAMO,
+DAÑO U OTRA RESPONSABILIDAD, YA SEA POR CONTRATO, AGRAVIO O DE OTRA MANERA,
+DERIVADA DEL SOFTWARE O DEL USO O CUALQUIER OTRA INTERACCIÓN CON EL SOFTWARE.
+
+
+-----------------------------------------
+Français (traduction non officielle)
+-----------------------------------------
+
+Licence MIT
+
+Copyright (c) 2026 Dmitry Rybchenko feat. Copilot
+(Copilot n’a pas dormi en écrivant ceci. Aucun ver ni virus; consommation crue sans danger.)
+
+La permission est accordée, gratuitement, à toute personne obtenant une copie de
+ce logiciel et de la documentation associée (« le Logiciel »), de traiter avec le
+Logiciel sans restriction, y compris sans limitation les droits d’utiliser,
+copier, modifier, fusionner, publier, distribuer, sous‑licencier et/ou vendre des
+copies du Logiciel, et de permettre aux personnes auxquelles le Logiciel est
+fourni de faire de même, sous réserve des conditions suivantes :
+
+L’avis de copyright ci‑dessus et le présent avis de permission doivent être
+inclus dans toutes les copies ou parties substantielles du Logiciel.
+
+LE LOGICIEL EST FOURNI « TEL QUEL », SANS GARANTIE D’AUCUNE SORTE, EXPRESSE
+OU IMPLICITE, Y COMPRIS MAIS SANS S’Y LIMITER LES GARANTIES DE QUALITÉ
+MARCHANDE, D’ADÉQUATION À UN USAGE PARTICULIER ET DE NON‑INFRACTION. EN
+AUCUN CAS LES AUTEURS OU TITULAIRES DU COPYRIGHT NE SERONT RESPONSABLES
+DE TOUTE RÉCLAMATION, DOMMAGE OU AUTRE RESPONSABILITÉ, QU’ELLE SOIT
+CONTRACTUELLE, DÉLICTUELLE OU AUTRE, DÉCOULANT DU LOGICIEL OU DE SON
+UTILISATION OU DE TOUTE AUTRE INTERACTION AVEC LE LOGICIEL.

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>QR Generator</title>
+
+<style>
+  body {
+    font-family: Consolas, monospace;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f2f2f2;
+    text-align: center;
+  }
+
+  .full {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 2px solid #444;
+    border-radius: 6px;
+    background: #fff;
+    text-align: center;
+  }
+
+  button.full {
+    cursor: pointer;
+    background: #333;
+    color: #fff;
+    border: none;
+    transition: 0.2s;
+  }
+
+  button.full:hover {
+    background: #555;
+  }
+
+  .title {
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .fileline {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  .filebox {
+    padding: 12px;
+    font-size: 20px;
+    border: 2px solid #444;
+    border-radius: 6px;
+    background: #fff;
+  }
+
+  .filename-input {
+    padding: 12px;
+    font-size: 20px;
+    border: 2px solid #444;
+    border-radius: 6px;
+    width: 150px;
+    text-align: center;
+  }
+
+  /* Центровка QR-картинки */
+  canvas {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+</head>
+<body>
+
+<div class="title">
+  Чистый и честный QR‑генератор.<br>
+  A Clean and Honest QR Generator.
+</div>
+
+
+<!-- Ссылка -->
+<input id="text" class="full"
+placeholder="Ссылка Link Link Enlace Lien" />
+
+<!-- Размер -->
+<select id="size" class="full">
+  <option value="256">(256px) Маленький Small Klein Pequeño Petit</option>
+  <option value="512" selected>(512px) Средний Medium Mittel Mediano Moyen</option>
+  <option value="1024">(1024px) Большой Large Groß Grande Grand</option>
+  <option value="1600">(1600px) Огромный Huge Riesig Enorme Énorme</option>
+</select>
+
+<!-- Генерировать -->
+<button onclick="make()" class="full">Генерировать Generate Erstellen Generar Créer</button>
+
+<!-- Сохранить -->
+<button onclick="save()" class="full">Сохранить Save Speichern Guardar Enregistrer</button>
+
+<!-- Имя файла: Download / [имя] / .png -->
+<div class="fileline">
+  <div class="filebox">Download/</div>
+
+  <input id="filename" class="filename-input"
+         placeholder="QR.png"
+         value="QR">
+
+  <div class="filebox">.png</div>
+</div>
+
+<!-- QR-код (без пустой строки, без рамки) -->
+<div id="qrcode"></div>
+
+<script>
+let qr = new QRious({
+  element: document.createElement("canvas"),
+  size: 512,
+  value: ""
+});
+
+function make() {
+  qr.size = parseInt(document.getElementById("size").value);
+  qr.value = document.getElementById("text").value;
+
+  const box = document.getElementById("qrcode");
+  box.innerHTML = "";
+  box.appendChild(qr.element);
+}
+
+function save() {
+  const name = document.getElementById("filename").value || "QR";
+  const link = document.createElement("a");
+  link.download = name + ".png";  // ВСЕГДА PNG
+  link.href = qr.element.toDataURL("image/png");
+  link.click();
+}
+</script>
+
+</body>
+</html>
