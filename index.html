@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>QR Generator</title>
@@ -13,7 +13,6 @@
     background: #f2f2f2;
     text-align: center;
   }
-
   .full {
     width: 100%;
     padding: 12px;
@@ -25,7 +24,6 @@
     background: #fff;
     text-align: center;
   }
-
   button.full {
     cursor: pointer;
     background: #333;
@@ -33,13 +31,10 @@
     border: none;
     transition: 0.2s;
   }
-
-  button.full:hover {
-    background: #555;
-  }
+  button.full:hover { background: #555; }
 
   .title {
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 20px;
     font-weight: bold;
   }
@@ -49,6 +44,7 @@
     gap: 10px;
     justify-content: center;
     margin-bottom: 15px;
+    position: relative;
   }
 
   .filebox {
@@ -57,6 +53,8 @@
     border: 2px solid #444;
     border-radius: 6px;
     background: #fff;
+    user-select: none;
+    cursor: pointer;
   }
 
   .filename-input {
@@ -68,79 +66,399 @@
     text-align: center;
   }
 
-  /* Центровка QR-картинки */
-  canvas {
-    display: block;
-    margin: 0 auto;
+  .preset-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: #fff;
+    border: 2px solid #444;
+    border-radius: 6px;
+    display: none;
+    flex-direction: column;
+    width: 150px;
+    z-index: 10;
   }
+
+  .preset-item {
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+  }
+  .preset-item:last-child { border-bottom: none; }
+  .preset-item:hover { background: #eee; }
+
+  .format-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: #fff;
+    border: 2px solid #444;
+    border-radius: 6px;
+    display: none;
+    flex-direction: column;
+    width: 120px;
+    z-index: 10;
+  }
+  .format-item {
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+  }
+  .format-item:last-child { border-bottom: none; }
+  .format-item:hover { background: #eee; }
+
+  canvas { display: block; margin: 0 auto; }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 </head>
 <body>
 
-<div class="title">
-  Чистый и честный QR‑генератор.<br>
+<div id="title" class="title">
   A Clean and Honest QR Generator.
 </div>
 
-
-<!-- Ссылка -->
-<input id="text" class="full"
-placeholder="Ссылка Link Link Enlace Lien" />
-
-<!-- Размер -->
-<select id="size" class="full">
-  <option value="256">(256px) Маленький Small Klein Pequeño Petit</option>
-  <option value="512" selected>(512px) Средний Medium Mittel Mediano Moyen</option>
-  <option value="1024">(1024px) Большой Large Groß Grande Grand</option>
-  <option value="1600">(1600px) Огромный Huge Riesig Enorme Énorme</option>
+<!-- ЯЗЫК — ПОЛНАЯ СТРОКА -->
+<select id="langSelect" class="full" onchange="setLang(this.value)">
+  <option value="0">English</option>
+  <option value="1">Русский</option>
+  <option value="2">Deutsch</option>
+  <option value="3">Español</option>
+  <option value="4">Français</option>
 </select>
 
-<!-- Генерировать -->
-<button onclick="make()" class="full">Генерировать Generate Erstellen Generar Créer</button>
-
-<!-- Сохранить -->
-<button onclick="save()" class="full">Сохранить Save Speichern Guardar Enregistrer</button>
-
-<!-- Имя файла: Download / [имя] / .png -->
+<!-- ТРИ ОДИНАКОВЫЕ СТРОКИ ВВОДА -->
 <div class="fileline">
-  <div class="filebox">Download/</div>
-
-  <input id="filename" class="filename-input"
-         placeholder="QR.png"
-         value="QR">
-
-  <div class="filebox">.png</div>
+  <input id="line1" class="full inputline" placeholder="">
+  <div id="preset1btn" class="filebox" onclick="togglePresetMenu(1)">TXT</div>
+  <div id="presetMenu1" class="preset-menu">
+    <div class="preset-item" onclick="presetSelect(1,'txt')">TXT</div>
+    <div class="preset-item" onclick="presetSelect(1,'url')">URL</div>
+    <div class="preset-item" onclick="presetSelect(1,'wifi')">Wi‑Fi</div>
+    <div class="preset-item" onclick="presetSelect(1,'vcard')">vCard</div>
+    <div class="preset-item" onclick="presetSelect(1,'geo')">Geo</div>
+    <div class="preset-item" onclick="presetSelect(1,'sms')">SMS</div>
+    <div class="preset-item" onclick="presetSelect(1,'email')">Email</div>
+    <div class="preset-item" onclick="presetSelect(1,'phone')">Phone</div>
+  </div>
 </div>
 
-<!-- QR-код (без пустой строки, без рамки) -->
+<div class="fileline">
+  <input id="line2" class="full inputline" placeholder="">
+  <div id="preset2btn" class="filebox" onclick="togglePresetMenu(2)">TXT</div>
+  <div id="presetMenu2" class="preset-menu">
+    <div class="preset-item" onclick="presetSelect(2,'txt')">TXT</div>
+    <div class="preset-item" onclick="presetSelect(2,'url')">URL</div>
+    <div class="preset-item" onclick="presetSelect(2,'wifi')">Wi‑Fi</div>
+    <div class="preset-item" onclick="presetSelect(2,'vcard')">vCard</div>
+    <div class="preset-item" onclick="presetSelect(2,'geo')">Geo</div>
+    <div class="preset-item" onclick="presetSelect(2,'sms')">SMS</div>
+    <div class="preset-item" onclick="presetSelect(2,'email')">Email</div>
+    <div class="preset-item" onclick="presetSelect(2,'phone')">Phone</div>
+  </div>
+</div>
+
+<div class="fileline">
+  <input id="line3" class="full inputline" placeholder="">
+  <div id="preset3btn" class="filebox" onclick="togglePresetMenu(3)">TXT</div>
+  <div id="presetMenu3" class="preset-menu">
+    <div class="preset-item" onclick="presetSelect(3,'txt')">TXT</div>
+    <div class="preset-item" onclick="presetSelect(3,'url')">URL</div>
+    <div class="preset-item" onclick="presetSelect(3,'wifi')">Wi‑Fi</div>
+    <div class="preset-item" onclick="presetSelect(3,'vcard')">vCard</div>
+    <div class="preset-item" onclick="presetSelect(3,'geo')">Geo</div>
+    <div class="preset-item" onclick="presetSelect(3,'sms')">SMS</div>
+    <div class="preset-item" onclick="presetSelect(3,'email')">Email</div>
+    <div class="preset-item" onclick="presetSelect(3,'phone')">Phone</div>
+  </div>
+</div>
+
+<select id="size" class="full">
+  <option id="size256" value="256">(256px) Small</option>
+  <option id="size512" value="512" selected>(256px) Medium</option>
+  <option id="size1024" value="1024">(1024px) Large</option>
+  <option id="size1600" value="1600">(1600px) Huge</option>
+</select>
+
+<button id="genbtn" onclick="make()" class="full">Generate</button>
+<button id="savebtn" onclick="save()" class="full">Save</button>
+
+<div class="fileline">
+  <div id="downloadlbl" class="filebox">Download/</div>
+  <input id="filename" class="filename-input" value="QR">
+  <div id="extbtn" class="filebox" onclick="toggleFormatMenu()">.jpg</div>
+  <div id="formatMenu" class="format-menu">
+    <div class="format-item" onclick="setFormat('jpg')">.jpg</div>
+    <div class="format-item" onclick="setFormat('png')">.png</div>
+    <div class="format-item" onclick="setFormat('webp')">.webp</div>
+  </div>
+</div>
+
 <div id="qrcode"></div>
 
 <script>
-let qr = new QRious({
-  element: document.createElement("canvas"),
-  size: 512,
-  value: ""
-});
+let LANG = 0;          // 0=en,1=ru,2=de,3=es,4=fr
+let currentFormat = "jpg";
+
+const TITLE = [
+  "A Clean and Honest QR Generator.",
+  "Чистый и честный QR‑генератор.",
+  "Ein sauberer und ehrlicher QR‑Generator.",
+  "Un generador QR limpio y honesto.",
+  "Un générateur QR propre et honnête."
+];
+
+const INPUT_PLACEHOLDER = [
+  "Text",
+  "Текст",
+  "Text",
+  "Texto",
+  "Texte"
+];
+
+const BTN_GENERATE = [
+  "Generate",
+  "Генерировать",
+  "Erstellen",
+  "Generar",
+  "Créer"
+];
+
+const BTN_SAVE = [
+  "Save",
+  "Сохранить",
+  "Speichern",
+  "Guardar",
+  "Enregistrer"
+];
+
+const SIZE256 = [
+  "(256px) Small",
+  "(256px) Маленький",
+  "(256px) Klein",
+  "(256px) Pequeño",
+  "(256px) Petit"
+];
+
+const SIZE512 = [
+  "(512px) Medium",
+  "(512px) Средний",
+  "(512px) Mittel",
+  "(512px) Mediano",
+  "(512px) Moyen"
+];
+
+const SIZE1024 = [
+  "(1024px) Large",
+  "(1024px) Большой",
+  "(1024px) Groß",
+  "(1024px) Grande",
+  "(1024px) Grand"
+];
+
+const SIZE1600 = [
+  "(1600px) Huge",
+  "(1600px) Огромный",
+  "(1600px) Riesig",
+  "(1600px) Enorme",
+  "(1600px) Énorme"
+];
+
+const DOWNLOAD_LABEL = [
+  "Download/",
+  "Скачать/",
+  "Download/",
+  "Descargar/",
+  "Télécharger/"
+];
+
+// содержимое пресетов — только там, где есть человеческие слова
+const PRESET_SMS = [
+  "sms:+3721234567?body=Message text",
+  "sms:+3721234567?body=Текст сообщения",
+  "sms:+3721234567?body=Nachrichtentext",
+  "sms:+3721234567?body=Texto del mensaje",
+  "sms:+3721234567?body=Texte du message"
+];
+
+const PRESET_EMAIL = [
+  "mailto:test@example.com?subject=Subject&body=Message text",
+  "mailto:test@example.com?subject=Тема&body=Текст",
+  "mailto:test@example.com?subject=Betreff&body=Nachrichtentext",
+  "mailto:test@example.com?subject=Asunto&body=Texto del mensaje",
+  "mailto:test@example.com?subject=Objet&body=Texte du message"
+];
+
+const PRESET_VCARD = [
+  "BEGIN:VCARD;VERSION:3.0;N:Last;First;;;TEL:+3721234567;EMAIL:test@example.com;END:VCARD",
+  "BEGIN:VCARD;VERSION:3.0;N:Фамилия;Имя;;;TEL:+3721234567;EMAIL:test@example.com;END:VCARD",
+  "BEGIN:VCARD;VERSION:3.0;N:Nachname;Vorname;;;TEL:+3721234567;EMAIL:test@example.com;END:VCARD",
+  "BEGIN:VCARD;VERSION:3.0;N:Apellido;Nombre;;;TEL:+3721234567;EMAIL:test@example.com;END:VCARD",
+  "BEGIN:VCARD;VERSION:3.0;N:Nom;Prénom;;;TEL:+3721234567;EMAIL:test@example.com;END:VCARD"
+];
+
+// остальные форматы — универсальные
+const PRESET_URL  = "https://example.com";
+const PRESET_WIFI = "WIFI:T:WPA;S:MyNetwork;P:MyPassword;;";
+const PRESET_GEO  = "geo:59.465,24.982";
+const PRESET_PHONE= "TEL:+3721234567";
+
+function setLang(idx) {
+  LANG = parseInt(idx,10);
+
+  document.getElementById("title").textContent = TITLE[LANG];
+
+  document.querySelectorAll(".inputline")
+    .forEach(e => e.placeholder = INPUT_PLACEHOLDER[LANG]);
+
+  document.getElementById("genbtn").textContent  = BTN_GENERATE[LANG];
+  document.getElementById("savebtn").textContent = BTN_SAVE[LANG];
+
+  document.getElementById("size256").textContent  = SIZE256[LANG];
+  document.getElementById("size512").textContent  = SIZE512[LANG];
+  document.getElementById("size1024").textContent = SIZE1024[LANG];
+  document.getElementById("size1600").textContent = SIZE1600[LANG];
+
+  document.getElementById("downloadlbl").textContent = DOWNLOAD_LABEL[LANG];
+}
+
+function togglePresetMenu(n) {
+  const menu = document.getElementById("presetMenu" + n);
+  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+}
+
+function presetSelect(n, type) {
+  const target = document.getElementById("line" + n);
+  const btn    = document.getElementById("preset" + n + "btn");
+
+  switch(type) {
+    case "txt":
+      target.value = "";
+      btn.textContent = "TXT";
+      break;
+    case "url":
+      target.value = PRESET_URL;
+      btn.textContent = "URL";
+      break;
+    case "wifi":
+      target.value = PRESET_WIFI;
+      btn.textContent = "Wi‑Fi";
+      break;
+    case "vcard":
+      target.value = PRESET_VCARD[LANG];
+      btn.textContent = "vCard";
+      break;
+    case "geo":
+      target.value = PRESET_GEO;
+      btn.textContent = "Geo";
+      break;
+    case "sms":
+      target.value = PRESET_SMS[LANG];
+      btn.textContent = "SMS";
+      break;
+    case "email":
+      target.value = PRESET_EMAIL[LANG];
+      btn.textContent = "Email";
+      break;
+    case "phone":
+      target.value = PRESET_PHONE;
+      btn.textContent = "Phone";
+      break;
+  }
+
+  document.getElementById("presetMenu" + n).style.display = "none";
+}
+
+function toggleFormatMenu() {
+  const menu = document.getElementById("formatMenu");
+  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+}
+
+function setFormat(fmt) {
+  currentFormat = fmt;
+  document.getElementById("extbtn").textContent = "." + fmt;
+  document.getElementById("formatMenu").style.display = "none";
+}
+
+qrcode.stringToBytes = s => Array.from(new TextEncoder().encode(s));
 
 function make() {
-  qr.size = parseInt(document.getElementById("size").value);
-  qr.value = document.getElementById("text").value;
+  const text =
+    document.getElementById("line1").value + "\n" +
+    document.getElementById("line2").value + "\n" +
+    document.getElementById("line3").value;
 
-  const box = document.getElementById("qrcode");
-  box.innerHTML = "";
-  box.appendChild(qr.element);
+  if (!text.trim()) {
+    alert("Введите хотя бы одну строку!");
+    return;
+  }
+
+  const size = parseInt(document.getElementById("size").value,10);
+
+  try {
+    const qr = qrcode(0, 'L');
+    qr.addData(text, 'Byte');
+    qr.make();
+
+    const moduleCount = qr.getModuleCount();
+    const margin = 2;
+    const totalModules = moduleCount + margin * 2;
+    const cellSize = Math.floor(size / totalModules);
+
+    const canvas = document.createElement("canvas");
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, size, size);
+
+    const offset = Math.floor((size - moduleCount * cellSize) / 2);
+
+    ctx.fillStyle = "#000";
+    for (let row = 0; row < moduleCount; row++) {
+      for (let col = 0; col < moduleCount; col++) {
+        if (qr.isDark(row, col)) {
+          ctx.fillRect(
+            offset + col * cellSize,
+            offset + row * cellSize,
+            cellSize,
+            cellSize
+          );
+        }
+      }
+    }
+
+    const box = document.getElementById("qrcode");
+    box.innerHTML = "";
+    box.appendChild(canvas);
+
+  } catch (e) {
+    alert("Ошибка генерации: " + e.message);
+    console.error(e);
+  }
 }
 
 function save() {
+  const canvas = document.querySelector("#qrcode canvas");
+  if (!canvas) {
+    alert("Сначала сгенерируйте QR-код!");
+    return;
+  }
+
   const name = document.getElementById("filename").value || "QR";
   const link = document.createElement("a");
-  link.download = name + ".png";  // ВСЕГДА PNG
-  link.href = qr.element.toDataURL("image/png");
+  link.download = name + "." + currentFormat;
+
+  const mime = (currentFormat === "jpg") ? "image/jpeg" : "image/" + currentFormat;
+  link.href = canvas.toDataURL(mime);
   link.click();
 }
+
+// старт: English
+setLang(0);
 </script>
 
 </body>
